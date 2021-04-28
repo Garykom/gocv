@@ -601,3 +601,8 @@ void Mat_AccumulatedWeighted(Mat src, Mat dst, double alpha) {
 void Mat_AccumulatedWeightedWithMask(Mat src, Mat dst, double alpha, Mat mask) {
     cv::accumulateWeighted(*src, *dst, alpha, *mask);
 }
+
+double PointPolygonTest(PointVector contour, Point2f pt, bool measureDist) {
+    cv::Point2f point2f(pt.x, pt.y);
+    return cv::pointPolygonTest(*contour, point2f, measureDist);
+}
