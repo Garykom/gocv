@@ -129,6 +129,7 @@ void Mat_AccumulateProduct(Mat src1, Mat src2, Mat dst);
 void Mat_AccumulateProductWithMask(Mat src1, Mat src2, Mat dst, Mat mask);
 void Mat_AccumulatedWeighted(Mat src, Mat dst, double alpha);
 void Mat_AccumulatedWeightedWithMask(Mat src, Mat dst, double alpha, Mat mask);
+double PointPolygonTest(PointVector contour, Point2f pt, bool measureDist);
 #ifdef __cplusplus
 }
 #endif
