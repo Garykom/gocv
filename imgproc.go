@@ -2070,3 +2070,20 @@ func AccumulatedWeighted(src Mat, dst *Mat, alpha float64) {
 func AccumulatedWeightedWithMask(src Mat, dst *Mat, alpha float64, mask Mat) {
 	C.Mat_AccumulatedWeightedWithMask(src.p, dst.p, C.double(alpha), mask.p)
 }
+
+// PointPolygonTest Performs a point-in-contour test.
+// The function determines whether the point is inside a contour, outside, or lies on an edge (or coincides with a vertex).
+// It returns positive (inside), negative (outside), or zero (on an edge) value, correspondingly.
+// When measureDist=false , the return value is +1, -1, and 0, respectively.
+// Otherwise, the return value is a signed distance between the point and the nearest contour edge.
+//
+// For further details, please see:
+// https://docs.opencv.org/master/d3/dc0/group__imgproc__shape.html#ga1a539e8db2135af2566103705d7a5722
+//
+func PointPolygonTest(contour PointVector, pt image.Point, measureDist bool) float64 {
+	point := C.struct_Point2f{
+		x: C.float(pt.X),
+		y: C.float(pt.Y),
+	}
+	return float64(C.PointPolygonTest(contour.p, point, C.bool(measureDist)))
+}
